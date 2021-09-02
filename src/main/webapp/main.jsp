@@ -27,8 +27,8 @@
             ${todo.title}<br>
           <small>등록날짜:${todo.regdate},</small>
           <small>${todo.name },</small>
-          <small>우선순위: ${todo.sequence}</small>
-          <small><button>></button></small>
+          <small>우선순위: ${todo.sequence} </small>
+          <small><button> ></button></small>
           </h5>
          
         </div>
