@@ -15,31 +15,34 @@
 	        <h4>새로운 TODO 등록</h4>
       </header>
       <section id="wrap">
-	      <div class="frm">
-	       <div>
-		        <h2>TODO</h2>
-			        <c:forEach var="todo" items="${todoList}">
-				        <c:if test="${todo.type eq 'TODO'}">
-					        <div class="web">        
-						         <h5>
-							            ${todo.title}<br>
-							          <small>등록날짜:${todo.regdate},</small>
-							          <small>${todo.name },</small>
-							          <small>우선순위: ${todo.sequence} </small>${todo.type }
-							          <small><button onclick="btn_click(${todo.id},'${todo.type}')"> ></button></small> 
-						          </h5>   
-					        </div>
-				        </c:if>
-			        </c:forEach>
+      <div class="box" >
+      <div >TODO</div>
+	      <div>       
+		       <div class="frm">		       
+				        <c:forEach var="todo" items="${todoList}">
+					        <c:if test="${todo.type eq 'TODO'}">
+						        <div >        
+							         <h5 class="data">
+								            ${todo.title}<br>
+								          <small>등록날짜:${todo.regdate},</small>
+								          <small>${todo.name },</small>
+								          <small>우선순위: ${todo.sequence} </small>${todo.type }
+								          <small><button onclick="btn_click(${todo.id},'${todo.type}')"> ></button></small> 
+							          </h5>   
+						        </div>
+					        </c:if>
+				        </c:forEach>
+		        </div>
 	        </div>
-	        </div>
-	        <div class="frm">
-			    	<div>
-				        <h2>DOING</h2>
+	        </div> 
+	        <div class="box">
+	         <div >DOING</div>
+	        <div >
+			    	<div class="frm">
 					        <c:forEach var="todo"  items="${todoList }">
 					        	<c:if test="${todo.type eq 'DOING'}">
-					        		<div class="web">        
-					         			<h5>
+					        		<div >        
+					         			<h5 class="data">
 								            ${todo.title}<br>
 								          <small>등록날짜:${todo.regdate},</small>
 								          <small>${todo.name },</small>
@@ -51,13 +54,15 @@
 			        	</c:forEach>
 	       		</div>
 	        </div>
-	        <div class="frm">
-		         <div>
-		        	<h2>DONE</h2>
+	        </div>
+	        <div  class="box"> 
+	        <div>DONE</div>
+	        <div>        
+	        <div class="frm">	         	
 				        <c:forEach var="todo"  items="${todoList }">
 				        	<c:if test="${todo.type eq 'DONE'}">
-				        		<div class="web">        
-				         			<h5>
+				        		<div >        
+				         			<h5 class="data">
 							            ${todo.title}<br>
 							          <small>등록날짜:${todo.regdate},</small>
 							          <small>${todo.name },</small>
@@ -68,6 +73,7 @@
 				        </c:forEach>
 		        </div>
 	        </div>
+	        </div> 
      </section>
 </body>
 <script type="text/javascript" src="js/todo.js"></script>
