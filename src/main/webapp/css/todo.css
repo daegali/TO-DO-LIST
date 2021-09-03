@@ -3,13 +3,6 @@ body {
   height: 100%;
   margin: 5% 0% 10% 15%;
 }
-div {
-  background-color: #4444;
-}
-header {
-  padding: 0% 0% 0% 0%;
-}
-
 h1 {
   width: 450px;
   height: 100px;
@@ -19,24 +12,10 @@ h1 {
 h4 {
   text-align: right;
 }
-ul {
-  text-align: center;
-}
-ul li {
-  border: 1px solid green;
-  background: green;
-  margin: 10px 0px 0px 0px;
-  padding: 10px 90px 10px 10px;
-  list-style: none;
-  display: inline-block;
-  width: 200px;
-  height: 30px;
-  text-align: left;
-  color: white;
+div {
+  background-color: #4444;
 }
 
-.web {
-  margin: 0% 63% 1% 9%;
-  border: 1px solid aquamarine;
-  background: aquamarine;
+.frm {
+	display: inline-block;
 }

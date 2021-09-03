@@ -12,8 +12,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import ko.or.connect.todo.dao.TodoDao;
 import ko.or.connect.todo.dto.TodoDto;
-
-@WebServlet("/todo.do")
 public class MainServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -26,7 +24,6 @@ public class MainServlet extends HttpServlet {
 		TodoDao dao = TodoDao.getInstance();
 		List<TodoDto> todoList = dao.getTodods();
 		request.setAttribute("todoList", todoList);
-		System.out.println(todoList);
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/main.jsp");
 		dispatcher.forward(request, response);

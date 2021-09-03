@@ -26,7 +26,7 @@ public class TodoDao {
 		Connection conn = null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
-		String sql = "select id, title, name, sequence, type, regdate from todo where type = 'TODO' order by regdate desc";
+		String sql = "select id, title, name, sequence, type, regdate from todo ";
 		
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
@@ -73,33 +73,28 @@ public class TodoDao {
 		return list;
 	}
 	
-	public void updateTodo(TodoDto dto) {
+	public void updateTodo(int id, String type) {
+		
 		Connection conn = null;
 		PreparedStatement ps = null;
-		ResultSet rs = null;
 		String sql1 = "update todo set type = 'DOING' where id = ?";
 		String sql2 = "update todo set type = 'DONE' where id = ?";
+			
 		try {
 			conn = DriverManager.getConnection(dburl, dbUser, dbpwd);
-			if(sql1.equals("TODO")) {
-			ps = conn.prepareStatement(sql1);
-			}else if(sql2.equals("DOING")) {
-				ps = conn.prepareStatement(sql2);
+			if(type.equals("TODO")) {
+				ps = conn.prepareStatement(sql1);
+			}else if(type.equals("DOING")) {
+				ps = conn.prepareStatement(sql2);			
 			}
-			
-			ps.setString(1, dto.getType());
+			ps.setInt(1, id);
 			ps.executeUpdate();
+				
+			System.out.println(ps);
 			
 		}catch (Exception e) {
 			e.printStackTrace();
 		}finally {
-			if(rs != null) {
-				try {
-					rs.close();
-		}catch (SQLException e) {
-			e.printStackTrace();
-		}			
-	}
 			if(ps != null) {
 				try {
 					ps.close();
