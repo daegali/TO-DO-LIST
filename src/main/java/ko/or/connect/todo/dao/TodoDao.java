@@ -11,7 +11,7 @@ import java.util.List;
 import ko.or.connect.todo.dto.TodoDto;
 
 public class TodoDao {
-	private static String dburl = "jdbc:mysql://localhost:3306/todo?serverTimezone=Asia/Seoul&useSSL=false";
+	private static String dburl = "jdbc:mysql://localhost:3306/todo?serverTimezone=Asia/Seoul&useUnicode=true&characterEncoding=euckr";
 	private static String dbUser = "todo";
 	private static String dbpwd = "todo123!@#";
 	
@@ -35,13 +35,13 @@ public class TodoDao {
 			rs = ps.executeQuery();
 			
 			while(rs.next()) {
-				TodoDto dto = new TodoDto();
-				dto.setId(rs.getLong("id"));
-				dto.setTitle(rs.getString("title"));
-				dto.setName(rs.getString("name"));
-				dto.setSequence(rs.getInt("sequence"));
-				dto.setType(rs.getString("type"));
-				dto.setRegdate(rs.getString("regdate"));
+				Long id = rs.getLong(1);
+				String title = rs.getString(2);
+				String name = rs.getString(3);
+				int sequence = rs.getInt(4);
+				String type = rs.getString(5);
+				String regdate = rs.getString(6);
+				TodoDto dto = new TodoDto(id, title, name, sequence, type, regdate);
 				list.add(dto);
 			}
 			
@@ -73,25 +73,61 @@ public class TodoDao {
 		return list;
 	}
 	
-	public void updateTodo(int id, String type) {
-		
+	public int updateTodo(Long id) {
+		int cnt = 0;
 		Connection conn = null;
 		PreparedStatement ps = null;
-		String sql1 = "update todo set type = 'DOING' where id = ?";
-		String sql2 = "update todo set type = 'DONE' where id = ?";
+		String sql1 = "update todo set type = 'DONE' where type='DOING' and id = ?";
+		String sql2 = "update todo set type = 'DOING' where type='TODO' and id = ?";
 			
 		try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
+		}
+		catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		// DOING -> DONE
+		try{
+			 	conn = DriverManager.getConnection(dburl, dbUser, dbpwd);
+				 ps = conn.prepareStatement(sql1);
+				ps.setLong(1, id);
+				cnt = ps.executeUpdate();
+		}
+		catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		// TODO -> DOING
+		try{
 			conn = DriverManager.getConnection(dburl, dbUser, dbpwd);
-			if(type.equals("TODO")) {
-				ps = conn.prepareStatement(sql1);
-			}else if(type.equals("DOING")) {
-				ps = conn.prepareStatement(sql2);			
-			}
-			ps.setInt(1, id);
-			ps.executeUpdate();
-				
-			System.out.println(ps);
+			ps = conn.prepareStatement(sql2);
+			ps.setLong(1, id);
+			cnt = ps.executeUpdate();
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return  cnt;
+	}
+	
+	
+	public int insertTodo(TodoDto dto) {
+		String sql = "insert into todo(title, name, sequence) values(?,?,?)";
+		
+		int cnt = 0;
+		Connection conn = null;
+		PreparedStatement ps = null;
+		
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			conn = DriverManager.getConnection(dburl, dbUser, dbpwd);
+			ps = conn.prepareStatement(sql);
 			
+			ps.setString(1, dto.getTitle());
+			ps.setString(2, dto.getName());
+			ps.setInt(3, dto.getSequence());
+			cnt = ps.executeUpdate();
 		}catch (Exception e) {
 			e.printStackTrace();
 		}finally {
@@ -110,5 +146,6 @@ public class TodoDao {
 				}
 			}
 		}
+			return cnt;
 	}
 }

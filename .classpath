@@ -30,5 +30,8 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="lib" path="C:/Program Files (x86)/MySQL/Connector J 8.0/mysql-connector-java-8.0.18.jar"/>
+	<classpathentry kind="lib" path="C:/tools/json/jackson-annotations-2.11.0.jar"/>
+	<classpathentry kind="lib" path="C:/tools/json/jackson-core-2.11.0.jar"/>
+	<classpathentry kind="lib" path="C:/tools/json/jackson-databind-2.11.0.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

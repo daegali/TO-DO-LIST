@@ -8,7 +8,11 @@ public class TodoDto {
 	private String title;
 	private String type;
 	
-	
+	public TodoDto(String title, String name, int sequence) {
+		this.name = name;
+		this.sequence = sequence;
+		this.title = title;
+	}
 	public long getId() {
 		return id;
 	}
@@ -53,6 +57,14 @@ public class TodoDto {
 				+ title + ", type=" + type + "]";
 	}
 	
-	
+	public TodoDto(Long id, String title, String name, int sequence, String type, String regdate) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.regdate = regdate;
+		this.sequence = sequence;
+		this.title = title;
+		this.type = type;
+	}
 	
 }
