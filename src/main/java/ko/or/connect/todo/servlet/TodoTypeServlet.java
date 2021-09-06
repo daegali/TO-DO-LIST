@@ -1,26 +1,19 @@
 package ko.or.connect.todo.servlet;
 
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.ArrayList;
-import java.util.List;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 
 import ko.or.connect.todo.dao.TodoDao;
-import ko.or.connect.todo.dto.TodoDto;
 public class TodoTypeServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 				TodoDao dao = new TodoDao();
-				Long id = Long.parseLong(request.getParameter("id"));
-				
+				Long id = Long.parseLong(request.getParameter("id"));			
 				dao.updateTodo(id);	
 			
 //				response.setCharacterEncoding("utf-8");

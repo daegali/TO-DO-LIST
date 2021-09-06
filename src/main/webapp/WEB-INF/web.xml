@@ -34,6 +34,12 @@
   	<description></description>
   	<servlet-class>ko.or.connect.todo.servlet.TodoTypeServlet</servlet-class>
   </servlet>
+  <servlet>
+  	<servlet-name>TodoDeleteServlet</servlet-name>
+  	<display-name>TodoDeleteServlet</display-name>
+  	<description></description>
+  	<servlet-class>ko.or.connect.todo.servlet.TodoDeleteServlet</servlet-class>
+  </servlet>
   <servlet-mapping>
   	<servlet-name>testServlet</servlet-name>
   	<url-pattern>/testServlet</url-pattern>
@@ -53,5 +59,9 @@
   <servlet-mapping>
   	<servlet-name>TodoTypeServlet</servlet-name>
   	<url-pattern>/TodoTypeServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>TodoDeleteServlet</servlet-name>
+  	<url-pattern>/TodoDeleteServlet</url-pattern>
   </servlet-mapping>
 </web-app>

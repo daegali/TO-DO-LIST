@@ -148,4 +148,25 @@ public class TodoDao {
 		}
 			return cnt;
 	}
+	public int deleteTodo(Long id) {
+		int cnt=0;
+		String sql = "delete from todo where id=?;";
+		
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
+		}
+		catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		try(Connection conn = DriverManager.getConnection(dburl,dbUser, dbpwd);
+				PreparedStatement ps = conn.prepareStatement(sql)) {
+			ps.setLong(1, id);
+			ps.executeUpdate();
+		}
+		catch (Exception e) {
+			e.printStackTrace();
+		}
+		return cnt;
+	}
 }

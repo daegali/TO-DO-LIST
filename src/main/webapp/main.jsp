@@ -55,7 +55,7 @@
 		      <p class="content-title">${todo.title }</p>
 		      <p class="content-data">등록날짜 : ${todo.regdate }, ${todo.name } 우선순위 : ${todo.sequence }</p>
 		      <c:set var="vid3" scope="request" value="${todo.id }"/>
-		      <button id="${todo.id}#${todo.type}" class="nextType" onclick="buttonDelete(id)">X</button>
+		      <button onclick="buttonDelete(${todo.id},'${todo.type }')">X</button>
 		    </section>
 		</c:if>
   		</c:forEach>
