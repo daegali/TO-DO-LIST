@@ -13,7 +13,19 @@ function btn_click(id,type){
    }
 
 
+function buttonDelete(id, type){
+	  var xhr = new XMLHttpRequest();
+	 xhr.addEventListener("load", function() {
+		if (xhr.readyState === XMLHttpRequest.DONE) {
+			if (xhr.status === 200){
+				window.location.reload();
+			}
+		}
+	});
+	
+	xhr.open("POST", "TodoDeleteServlet");
+	xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+	xhr.send("type=" + type + "&id=" + id);
 
-
-
+}
 
