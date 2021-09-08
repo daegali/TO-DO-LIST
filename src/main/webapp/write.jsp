@@ -9,7 +9,7 @@
 </head>
 <body>	
 <div>
-<p><h1 style="text-align:center;">할 일 등록</h1></p>
+  <p><h1 style="text-align:center;">할 일 등록</h1></p>
   <section>
   <!-- form에 입력받은 정보를 TodoAddServlet에게 POST 방식으로 전송한다-->
     <form action="http://localhost:8080/todo/TodoAddServlet" method="post">
@@ -44,6 +44,5 @@
     </div>
       
   </section>
-  </div>
 </body>
 </html>

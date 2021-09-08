@@ -1,15 +1,16 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page isELIgnored="false"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>TODO LIST</title>
-<link rel="stylesheet" type="text/css"  href="css/main.css">
+<meta charset="EUC-KR">
+<title>TO-DO-LIST</title>
+<link rel="stylesheet" type="text/css"  href="css/todo.css">
 </head>
 <body>
+<<<<<<< HEAD
     <header>
   <button class="new" onclick="location.href='http://localhost:8080/todo/TodoFormServlet'">Ìï†Ïùº Îì±Î°ù</button>
 </header>
@@ -64,5 +65,73 @@
 </section>
      <script type="text/javascript"  src="js/todo.js">
 </script>
+=======
+      <header>
+	        <h1>≥™¿« «ÿæﬂ«“ ¿œµÈ</h1>
+	        <h4>ªı∑ŒøÓ TODO µÓ∑œ</h4>
+      </header>
+      <section id="wrap">
+      <div class="box" >
+      <div >TODO</div>
+	      <div>       
+		       <div class="frm">		       
+				        <c:forEach var="todo" items="${todoList}">
+					        <c:if test="${todo.type eq 'TODO'}">
+						        <div >        
+							         <h5 class="data">
+								            ${todo.title}<br>
+								          <small>µÓ∑œ≥Ø¬•:${todo.regdate},</small>
+								          <small>${todo.name },</small>
+								          <small>øÏº±º¯¿ß: ${todo.sequence} </small>${todo.type }
+								          <small><button onclick="btn_click(${todo.id},'${todo.type}')"> ></button></small> 
+							          </h5>   
+						        </div>
+					        </c:if>
+				        </c:forEach>
+		        </div>
+	        </div>
+	        </div> 
+	        <div class="box">
+	         <div >DOING</div>
+	        <div >
+			    	<div class="frm">
+					        <c:forEach var="todo"  items="${todoList }">
+					        	<c:if test="${todo.type eq 'DOING'}">
+					        		<div >        
+					         			<h5 class="data">
+								            ${todo.title}<br>
+								          <small>µÓ∑œ≥Ø¬•:${todo.regdate},</small>
+								          <small>${todo.name },</small>
+								          <small>øÏº±º¯¿ß: ${todo.sequence} </small>
+								          <small><button onclick="btn_click(${todo.id},'${todo.type}')"> ></button></small> 
+					         		 </h5>   
+					        	</div>
+				        	</c:if>
+			        	</c:forEach>
+	       		</div>
+	        </div>
+	        </div>
+	        <div  class="box"> 
+	        <div>DONE</div>
+	        <div>        
+	        <div class="frm">	         	
+				        <c:forEach var="todo"  items="${todoList }">
+				        	<c:if test="${todo.type eq 'DONE'}">
+				        		<div >        
+				         			<h5 class="data">
+							            ${todo.title}<br>
+							          <small>µÓ∑œ≥Ø¬•:${todo.regdate},</small>
+							          <small>${todo.name },</small>
+							          <small>øÏº±º¯¿ß: ${todo.sequence} </small>
+				         		 </h5>   
+				       		 </div>
+				        	</c:if>
+				        </c:forEach>
+		        </div>
+	        </div>
+	        </div> 
+     </section>
+>>>>>>> parent of 27624fc (Ajax ÎπÑÎèôÍ∏∞ Ï≤òÎ¶¨ ÏïÑÏßÅ ÎØ∏Íµ¨ÌòÑ Ï∞® ÌõÑ Í≥µÎ∂Ä ÌõÑ Íµ¨ÌòÑ Ìï† ÏòàÏ†ï)
 </body>
+<script type="text/javascript" src="js/todo.js"></script>
 </html>

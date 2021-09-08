@@ -2,7 +2,7 @@ function btn_click(id,type){
       var xhr = new XMLHttpRequest();
       xhr.onload = function() {
            if (xhr.status === 200 || xhr.status === 201) {
-            window.location.reload();
+             console.log("success");
            } else {
              console.error(xhr.responseText);
            }
@@ -10,6 +10,7 @@ function btn_click(id,type){
       xhr.open("POST", "TodoTypeServlet", true);
       xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
       xhr.send("id="+id+"&type="+type);
+<<<<<<< HEAD
    }
 
 
@@ -29,3 +30,6 @@ function buttonDelete(id, type){
 
 }
 
+=======
+   }
+>>>>>>> parent of 27624fc (Ajax 비동기 처리 아직 미구현 차 후 공부 후 구현 할 예정)
